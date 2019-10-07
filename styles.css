@@ -1,17 +1,32 @@
-* {
-  margin:0px;
-  padding:0px;
+#name {
+  color: white;
+  background-color: darkgreen;
 }
 
-#octocat {
-  display: block;
-  width:384px;
-  margin: 50px auto;
+.nestbody {
+  width: 60%;
+  height: auto;
+  text-align: center;
+}
+
+.image {
+  border-radius: 50%;
+}
+.history {
+  column-count: 3;
+}
+
+h2 {
+  text-decoration: underline;
+  font-style: italic;
+  color: purple;
+}
+
+ul {
+  list-style-position: inside;
+  color: red;
 }
 
 p {
-  display: block;
-  width: 400px;
-  margin: 50px auto;
-  font: 30px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+  font-weight: bold;
 }

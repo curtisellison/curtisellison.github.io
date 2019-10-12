@@ -11,9 +11,9 @@
     <div class="wrapper">
       <div class="header">Test JSON page</div>
       <!-- <button class="button" onclick="loadData()">Load Some JSON</button> -->
-      <button class="button" onclick="console.log(myFunction(countries));">Click me to replace list entries</button>
+      <button class="button" onclick="console.log(myFunction());">Click me to replace list entries</button>
       <div class="content">
-        <ul class="instructions">
+        <ol class="instructions">
           <li>Delete and re-clone the class repository</li>
           <li>Open <span class="code">lab_5_json.html</span> in your browser</li>
           <li>Open your developer tools and look at the logged data</li>
@@ -26,7 +26,7 @@
               <li>Randomize which fifty countries are displayed on load</li>
             </ol>
           </li>
-        </ul>
+        </ol>
       </div>
       <div class="footer"></div>
     </div>
@@ -153,7 +153,7 @@
       { "name": "Korea, Republic of", "code": "KR" },
       { "name": "Kuwait", "code": "KW" },
       { "name": "Kyrgyzstan", "code": "KG" },
-      { "name": "Lao People'S Democratic Republic", "code": "LA" },
+      { "name": "Lao People's Democratic Republic", "code": "LA" },
       { "name": "Latvia", "code": "LV" },
       { "name": "Lebanon", "code": "LB" },
       { "name": "Lesotho", "code": "LS" },
@@ -278,16 +278,34 @@
       { "name": "Zambia", "code": "ZM" },
       { "name": "Zimbabwe", "code": "ZW" }
     ]
-    function myFunction(code){
-      var i;
-      var countries = new Array[50];
-      for (i = 0; i < 50; i+=1){
-      countries[i] = i + 1 + ". " + code[Math.floor(Math.random() * code.length)];
-      }
-      return countries;
+    console.log("List of countries in the world", countries);
+    sessionStorage.setItem('countries_arr', JSON.stringify(countries));
+    
+    function myFunction(){
+      const json = sessionStorage.getItem('countries_arr');
+      const list = JSON.parse(json);
+      
+      const htmlArray = list.map((i) => i.name);
+      
+      const element = document.querySelector('.instructions');
+      element.innerHTML = '';       
+
+      for (let i = 0; i < 50; i+=1){
+          const selectNumber = getRandomIntInclusive(0, 242);
+          let el = document.createElement("li");
+          el.innerText = htmlArray[selectNumber];
+          element.appendChild(el);
+        }
+      
+        function getRandomIntInclusive(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+        }
+        
     }
 
-    console.log("List of countries in the world", countries);
+    
   </script>
 </body>
 

@@ -22,7 +22,7 @@
           .then(names => {
             const elemental = document.querySelector(".content");
             elemental.innerHTML = "";
-
+      
             for (let i = 0; i < 15; i+=1) {
               const selectNumber = getRandomIntInclusive(0, 242);
               let el = document.createElement("li");
